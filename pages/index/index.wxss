@@ -6,10 +6,10 @@
 }
 
 .userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
+  width: 250rpx;
+  height: 250rpx;
   margin: 20rpx;
-  border-radius: 50%;
+  background-color: lightgrey;
 }
 
 .userinfo-nickname {
@@ -18,4 +18,9 @@
 
 .usermotto {
   margin-top: 200px;
+}
+
+.inputtext {
+  margin-top: 20rpx;
+  background-color: lightgrey;
 }

@@ -3,24 +3,46 @@
 var app = getApp()
 Page({
   data: {
-    motto: 'Hello World',
-    userInfo: {}
+    url: "",
+    keyword: "",
   },
   //事件处理函数
   bindViewTap: function() {
-    wx.navigateTo({
-      url: '../logs/logs'
+    var that = this
+    wx.request({
+      url: 'https://www.doutula.com/search?keyword=' + this.data.keyword,
+      data: {},
+      method: 'GET',
+      success: function(res){
+        //console.log(res.data)
+        var html = res.data
+        var reg = /(data-original=".*?:\/\/(.+?)")/g
+        var urls = [], found
+
+        while(found = reg.exec(html)) {
+          console.log(found[2])
+          urls.push("http://" + found[2])
+          reg.lastIndex = found.index + 1
+        }
+        that.setData({
+          url: urls[0]
+        })
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
     })
   },
   onLoad: function () {
-    console.log('onLoad')
-    var that = this
-    //调用应用实例的方法获取全局数据
-    app.getUserInfo(function(userInfo){
-      //更新数据
-      that.setData({
-        userInfo:userInfo
-      })
+
+  },
+
+  bindInput: function(e) {
+    this.setData({
+      keyword: e.detail.value
     })
-  }
+  },
 })
