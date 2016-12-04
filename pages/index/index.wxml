@@ -13,7 +13,15 @@
   <view class="titletextview">
     <text class="savehinttext" >长按保存图片, 微信聊天再也不怕斗图了~</text>
   </view>
-  <view  bindtap="bindViewTap" class="searchimage">
-    <image class="userinfo-avatar" src="{{url}}" background-size="cover" mode="scaleToFill"></image>
+  <view  bindtap="showActions" class="searchimage">
+    <image class="userinfo-avatar" src="{{urls[0]}}" background-size="cover" mode="scaleToFill"></image>
   </view>
 </view>
+
+<action-sheet hidden="{{!showActionsSheet}}" bindchange="hideActionSheet">
+    <action-sheet-item bindtap="downloadImage">保存到本地</action-sheet-item>
+    <action-sheet-cancel class="cancel">取消</action-sheet-cancel>
+</action-sheet>
+
+<loading hidden="{{!showLoading}}" bindchange="hideLoading">{{loadingMessage}}</loading>
+<toast hidden="{{!showToast}}" duration="1000" bindchange="hideToast">{{toastMessage}}</toast>

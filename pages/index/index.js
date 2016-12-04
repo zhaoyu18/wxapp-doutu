@@ -3,9 +3,22 @@
 var app = getApp()
 Page({
   data: {
-    url: "",
+    urls: [],
     keyword: "",
     loading: false,
+    showActionsSheet: false,
+    imageInAction: '',
+    // 是否显示loading
+    showLoading: false,
+
+    // loading提示语
+    loadingMessage: '正在保存..',
+
+    // 是否显示toast
+    showToast: false,
+
+    // 提示消息
+    toastMessage: '',
   },
   //事件处理函数
   bindViewTap: function() {
@@ -29,7 +42,7 @@ Page({
           reg.lastIndex = found.index + 1
         }
         that.setData({
-          url: urls[0],
+          urls: urls,
           loading: false,
         })
       },
@@ -52,5 +65,73 @@ Page({
     this.setData({
       keyword: e.detail.value
     })
+  },
+
+  imagetap: function() {
+    wx.previewImage({
+      current: this.data.urls[0],
+      urls: this.data.urls
+    })
+  },
+
+  hideActionSheet() {
+    this.setData({ showActionsSheet: false, imageInAction: '' });
+  },
+
+  showActions(event) {
+    this.setData({ showActionsSheet: true, imageInAction: event.target.dataset.src });
+  },
+
+  downloadImage() {
+    this.showLoading('正在保存图片…');
+    console.log('download_image_url', this.data.urls[0]);
+
+    wx.downloadFile({
+      url: this.data.urls[0],
+      type: 'image',
+      success: (resp) => {
+        wx.saveFile({
+          tempFilePath: resp.tempFilePath,
+          success: (resp) => {
+            this.showToast('图片保存成功');
+          },
+
+          fail: (resp) => {
+            console.log('fail', resp);
+          },
+
+          complete: (resp) => {
+            console.log('complete', resp);
+            this.hideLoading();
+          },
+        });
+      },
+
+      fail: (resp) => {
+        console.log('fail', resp);
+      },
+    });
+
+    this.setData({ showActionsSheet: false, imageInAction: '' });
+  },
+
+  // 显示loading提示
+  showLoading(loadingMessage) {
+    this.setData({ showLoading: true, loadingMessage });
+  },
+
+  // 隐藏loading提示
+  hideLoading() {
+    this.setData({ showLoading: false, loadingMessage: '' });
+  },
+
+  // 显示toast消息
+  showToast(toastMessage) {
+    this.setData({ showToast: true, toastMessage });
+  },
+
+  // 隐藏toast消息
+  hideToast() {
+    this.setData({ showToast: false, toastMessage: '' });
   },
 })
