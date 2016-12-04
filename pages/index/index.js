@@ -158,4 +158,25 @@ Page({
       })
     }
   },
+
+  recommendWordSearch1: function(e) {
+    this.setData({
+      keyword: "我爱工作"
+    })
+    this.bindViewTap()
+  },
+
+  recommendWordSearch2: function(e) {
+    this.setData({
+      keyword: "工作使我快乐"
+    })
+    this.bindViewTap()
+  },
+
+  recommendWordSearch3: function(e) {
+    this.setData({
+      keyword: "老板我要加薪"
+    })
+    this.bindViewTap()
+  },
 })

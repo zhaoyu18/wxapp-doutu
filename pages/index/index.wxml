@@ -23,6 +23,12 @@
   <view class="moreImageView" hidden="{{!showMoreButton}}" >
     <text class="moreImageText" bindtap="displayMoreImage" >更多结果...</text>
   </view>
+  <text style="font-size: 13px;text-align: left; width: 100%; padding-left: 60rpx; padding-top: 30rpx; background-color: #f0f0f2;">热门推荐</text>
+  <view class="recommendView" >
+    <text class="recommendText" bindtap="recommendWordSearch1">我爱工作</text>
+    <text class="recommendText" bindtap="recommendWordSearch2">工作使我快乐</text>
+    <text class="recommendText" bindtap="recommendWordSearch3">老板我要加薪</text>
+  </view>
 </view>
 
 <action-sheet hidden="{{!showActionsSheet}}" bindchange="hideActionSheet">

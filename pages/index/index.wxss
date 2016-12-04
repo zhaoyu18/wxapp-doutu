@@ -101,3 +101,20 @@ action-sheet-item.warn {
   flex: 1;
   background-color: #f0f0f2;
 }
+
+.recommendView {
+  padding-top: 30rpx;
+  padding-bottom: 300rpx;
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  flex: 1;
+  background-color: #f0f0f2;
+}
+
+.recommendText {
+  color: #2baf2b;
+  font-size: 13px;
+  padding-left: 30rpx;
+  background-color: #f0f0f2;
+}
