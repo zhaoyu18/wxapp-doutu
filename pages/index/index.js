@@ -3,6 +3,7 @@
 var app = getApp()
 Page({
   data: {
+    displayurls: [],
     urls: [],
     keyword: "",
     loading: false,
@@ -19,6 +20,8 @@ Page({
 
     // 提示消息
     toastMessage: '',
+    displayMoreImage: false,
+    showMoreButton: false,
   },
   //事件处理函数
   bindViewTap: function() {
@@ -43,7 +46,10 @@ Page({
         }
         that.setData({
           urls: urls,
+          displayurls: [urls[0]],
           loading: false,
+          showMoreButton: true,
+          displayMoreImage: false,
         })
       },
       fail: function() {
@@ -135,5 +141,21 @@ Page({
   // 隐藏toast消息
   hideToast() {
     this.setData({ showToast: false, toastMessage: '' });
+  },
+
+  displayMoreImage() {
+    console.log('display more image')
+    if(this.data.displayMoreImage == true) {
+      this.setData({
+        displayurls: [this.data.urls[0]],
+        displayMoreImage: false,
+      })
+    } else {
+     this.setData({
+        displayurls: this.data.urls,
+        displayMoreImage: true,
+        showMoreButton: false,
+      })
+    }
   },
 })

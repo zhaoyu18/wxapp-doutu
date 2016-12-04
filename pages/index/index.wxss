@@ -83,5 +83,21 @@
 }
 
 action-sheet-item.warn {
-    color: #e64340;
+  color: #e64340;
+}
+
+.moreImageText {
+  color: #2baf2b;
+  font-size: 13px;
+  text-align: right;
+  padding-right: 30rpx;
+  background-color: #f0f0f2;
+}
+
+.moreImageView {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  flex: 1;
+  background-color: #f0f0f2;
 }

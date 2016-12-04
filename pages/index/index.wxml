@@ -14,11 +14,14 @@
     <text class="savehinttext" >点击保存图片, 微信聊天再也不怕斗图了~</text>
   </view>
   <view class="listview">
-    <block wx:for-items="{{urls}}" wx:for-item="item">
+    <block wx:for-items="{{displayurls}}" wx:for-item="item">
       <view class="searchimage">
         <image class="userinfo-avatar" id="{{index}}" src="{{item}}" bindtap="showActions" background-size="cover" mode="scaleToFill"></image>
       </view>
     </block>
+  </view>
+  <view class="moreImageView" hidden="{{!showMoreButton}}" >
+    <text class="moreImageText" bindtap="displayMoreImage" >更多结果...</text>
   </view>
 </view>
 
