@@ -5,10 +5,14 @@ Page({
   data: {
     url: "",
     keyword: "",
+    loading: false,
   },
   //事件处理函数
   bindViewTap: function() {
     var that = this
+    this.setData({
+      loading: true,
+    })
     wx.request({
       url: 'https://www.doutula.com/search?keyword=' + this.data.keyword,
       data: {},
@@ -25,7 +29,8 @@ Page({
           reg.lastIndex = found.index + 1
         }
         that.setData({
-          url: urls[0]
+          url: urls[0],
+          loading: false,
         })
       },
       fail: function() {
@@ -33,6 +38,9 @@ Page({
       },
       complete: function() {
         // complete
+        this.setData({
+          loading: false,
+        })
       }
     })
   },

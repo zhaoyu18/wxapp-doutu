@@ -1,13 +1,19 @@
 <!--index.wxml-->
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
+  <view class="topbardividerline" />
+  <view class="titletextview">
+    <text class="titletext">人人都是斗图小能手</text>
+  </view>
+  <view class="searchview">
+    <view class="inputtextview">
+      <input class="inputtext" bindinput="bindInput" placeholder="搜索一下, 给你图片" />
+    </view>
+    <button class="searchbutton" bindtap="bindViewTap" loading="{{loading}}">搜索</button>
+  </view>
+  <view class="titletextview">
+    <text class="savehinttext" >长按保存图片, 微信聊天再也不怕斗图了~</text>
+  </view>
+  <view  bindtap="bindViewTap" class="searchimage">
     <image class="userinfo-avatar" src="{{url}}" background-size="cover" mode="scaleToFill"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-  </view>
-  <view class="inputtext">
-    <input bindinput="bindInput" placeholder="             " />
-  </view>
-  <view class="usermotto" bindtap="bindViewTap">
-    <text class="user-motto">搜索</text>
   </view>
 </view>
