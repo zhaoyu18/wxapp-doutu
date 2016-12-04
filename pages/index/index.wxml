@@ -11,10 +11,14 @@
     <button class="searchbutton" bindtap="bindViewTap" loading="{{loading}}">搜索</button>
   </view>
   <view class="titletextview">
-    <text class="savehinttext" >长按保存图片, 微信聊天再也不怕斗图了~</text>
+    <text class="savehinttext" >点击保存图片, 微信聊天再也不怕斗图了~</text>
   </view>
-  <view  bindtap="showActions" class="searchimage">
-    <image class="userinfo-avatar" src="{{urls[0]}}" background-size="cover" mode="scaleToFill"></image>
+  <view class="listview">
+    <block wx:for-items="{{urls}}" wx:for-item="item">
+      <view class="searchimage">
+        <image class="userinfo-avatar" id="{{index}}" src="{{item}}" bindtap="showActions" background-size="cover" mode="scaleToFill"></image>
+      </view>
+    </block>
   </view>
 </view>
 

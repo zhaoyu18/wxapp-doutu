@@ -3,12 +3,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 50rpx;
+  margin-top: 0rpx;
+  height: 400rpx;
+  width: 100%;
 }
 
 .userinfo-avatar {
-  width: 300rpx;
-  height: 300rpx;
+  width: 400rpx;
+  height: 400rpx;
   margin: 20rpx;
   background-color: lightgrey;
 }
@@ -73,6 +75,11 @@
 
 .savehinttext {
   font-size: 13px;
+}
+
+.listview {
+  width: 100%;
+  background-color: #f0f0f2;
 }
 
 action-sheet-item.warn {

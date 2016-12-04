@@ -51,7 +51,7 @@ Page({
       },
       complete: function() {
         // complete
-        this.setData({
+        that.setData({
           loading: false,
         })
       }
@@ -79,15 +79,16 @@ Page({
   },
 
   showActions(event) {
-    this.setData({ showActionsSheet: true, imageInAction: event.target.dataset.src });
+    var index = event.target.id
+    this.setData({ showActionsSheet: true, imageInAction: this.data.urls[index]});
   },
 
   downloadImage() {
     this.showLoading('正在保存图片…');
-    console.log('download_image_url', this.data.urls[0]);
+    console.log('download_image_url', this.data.imageInAction);
 
     wx.downloadFile({
-      url: this.data.urls[0],
+      url: this.data.imageInAction,
       type: 'image',
       success: (resp) => {
         wx.saveFile({
@@ -98,6 +99,7 @@ Page({
 
           fail: (resp) => {
             console.log('fail', resp);
+            this.hideLoading();
           },
 
           complete: (resp) => {
